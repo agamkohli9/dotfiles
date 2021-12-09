@@ -20,10 +20,34 @@ call plug#end()
 colorscheme codedark
 let g:airline_theme='wombat'
 let g:airline_powerline_fonts=1
-"let g:airline_statusline_ontop=1
 
 " NERDTree
 nmap <C-n> :NERDTreeToggle<CR>
+
+" COC
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" nerdcommenter
+noremap <C-_> <plug>NERDCommenterToggle
+vmap <C-_> <plug>NERDCommenterToggle
+nmap <C-_> <plug>NERDCommenterToggle
+
+" tmux
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+" leetcode
+let g:leetcode_browser = 'firefox'
+let g:leetcode_solution_filetype = 'python3'
+
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+
+nnoremap <S-F5> :call vimspector#Reset()<CR>
 
 " Submode
 
@@ -55,42 +79,10 @@ endfor
 " Old way, just in case.
 nnoremap <Leader>w <C-w>
 
-" COC
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" nerdcommenter
-noremap <C-_> <plug>NERDCommenterToggle
-vmap <C-_> <plug>NERDCommenterToggle
-nmap <C-_> <plug>NERDCommenterToggle
-
-" tmux
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <> :TmuxNavigateLeft<cr>
-nnoremap <silent> <> :TmuxNavigateDown<cr>
-nnoremap <silent> <> :TmuxNavigateUp<cr>
-nnoremap <silent> <leader>term :TmuxNavigateRight<cr>
-nnoremap <silent> <> :TmuxNavigatePrevious<cr>
-
-" leetcode
-let g:leetcode_browser = 'firefox'
-let g:leetcode_solution_filetype = 'python3'
-
-" vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
-
-nnoremap <S-F5> :call vimspector#Reset()<CR>
-
 " Misc
 let &t_ut=''
 set clipboard=unnamedplus
 inoremap jk <ESC>
-
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 
 
 
