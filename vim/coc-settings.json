@@ -1,0 +1,5 @@
+{
+	"python.jediEnabled": false,
+	"coc.preferences.formatOnSaveFiletypes": ["python", "html", "css", "markdown", "json"]
+  
+}

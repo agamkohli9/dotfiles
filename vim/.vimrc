@@ -37,6 +37,14 @@ nmap <leader>X <Plug>JupyterExecuteAll
 nmap <C-n> :NERDTreeToggle<CR>
 
 " COC
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ 'coc-pyright', 
+  \ ]
+
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " nerdcommenter
@@ -308,3 +316,10 @@ set shortmess+=F  " to get rid of the file name displayed in the command line ba
 " 	<F9> - Toggle breakpoint
 " C-n - Toggle NERDTree
 " \term - open terminal
+"
+" HOW TO USE JUPYTER NOTEBOOK
+" create a new notebook with $python -m jupyter_ascending.scripts.make_pair --base notebook
+" open notebook with $jupyter notebook notebook.sync.ipynb
+" edit py file
+" 	create new python cell with # %%
+" 	create new markdown cell with # %% [markdown]
