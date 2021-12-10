@@ -13,6 +13,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ianding1/leetcode.vim'
 Plug 'kana/vim-submode'
+Plug 'untitled-ai/jupyter_ascending.vim'
+Plug 'hanschen/vim-ipython-cell' " Fixes bug in jupyter_ascending
 
 call plug#end()
 
@@ -20,6 +22,16 @@ call plug#end()
 colorscheme codedark
 let g:airline_theme='wombat'
 let g:airline_powerline_fonts=1
+
+" jupyter
+function! PrevExecNextCell()
+    call IPythonCellPrevCell()
+    call jupyter_ascending#execute()
+    call IPythonCellNextCell()
+endfunction
+
+nmap <leader>x :call PrevExecNextCell()<CR>
+nmap <leader>X <Plug>JupyterExecuteAll
 
 " NERDTree
 nmap <C-n> :NERDTreeToggle<CR>
