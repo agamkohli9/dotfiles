@@ -1,20 +1,22 @@
 " Plugins
 call plug#begin('~/.vim/plugins')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'morhetz/gruvbox'
-Plug 'scrooloose/nerdcommenter'
-Plug 'puremourning/vimspector'
-Plug 'airblade/vim-gitgutter'
-Plug 'tomasiser/vim-code-dark'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ianding1/leetcode.vim'
-Plug 'kana/vim-submode'
-Plug 'untitled-ai/jupyter_ascending.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " code autocompletion
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " filesystem with C-n
+Plug 'christoomey/vim-tmux-navigator' " Tmux integration
+Plug 'puremourning/vimspector' " Visual debugger
+Plug 'airblade/vim-gitgutter' " Shows changed lines to git repos
+Plug 'tomasiser/vim-code-dark' " VSC theme
+Plug 'vim-airline/vim-airline' " Airline (bottom bar)
+Plug 'vim-airline/vim-airline-themes' " Airline themes
+Plug 'ianding1/leetcode.vim' " Leetcode Integration
+Plug 'kana/vim-submode' " Hold down C-w to change focused pane
+Plug 'untitled-ai/jupyter_ascending.vim' " Jupyter Notebook integration
 Plug 'hanschen/vim-ipython-cell' " Fixes bug in jupyter_ascending
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Python Syntax Highlighting
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " dependency for fzf.vim
+Plug 'junegunn/fzf.vim' " fuzzy find files in dir with :Files or files in ~ with :AllFiles
+Plug 'wesQ3/vim-windowswap' " swap buffers x and y: focus on x, \ww, focus on y, \ww
 
 call plug#end()
 
@@ -30,13 +32,34 @@ function! PrevExecNextCell()
     call IPythonCellNextCell()
 endfunction
 
+" FZF
+command! -bang AllFiles call fzf#vim#files('~', <bang>0)
+
+" Semshi
+let g:semshi#filetypes=['python']
+let g:semshi#excluded_hl_groups=['unresolved']
+let g:semshi#simplify_markup=v:false
+
+function MyCustomHighlights()
+	" Agam's own XTERM colors for syntax highlighting
+	hi SemshiLocal       		ctermfg=117
+	hi SemshiGlobal      		ctermfg=227
+	hi SemshiImported    		ctermfg=218
+	hi SemshiParameter   		ctermfg=49
+	hi semshiParameterUnused 	ctermfg=117
+	hi SemshiBuiltin     		ctermfg=223
+	hi SemshiAttribute     		ctermfg=195
+	hi semshiUnresolved      	ctermfg=226
+endfunction
+autocmd FileType python call MyCustomHighlights()
+
 nmap <leader>x :call PrevExecNextCell()<CR>
 nmap <leader>X <Plug>JupyterExecuteAll
 
 " NERDTree
 nmap <C-n> :NERDTreeToggle<CR>
 
-" COC
+" Coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -100,13 +123,11 @@ endfor
 nnoremap <Leader>w <C-w>
 
 " Misc
+set number
 let &t_ut=''
 set clipboard=unnamedplus
 inoremap jk <ESC>
-
-
-
-
+inoremap kj <ESC>
 
 " Coc
 
@@ -316,6 +337,8 @@ set shortmess+=F  " to get rid of the file name displayed in the command line ba
 " 	<F9> - Toggle breakpoint
 " C-n - Toggle NERDTree
 " \term - open terminal
+" :Semshi rename <word> - change all local instances of word on cursor to
+" <word>
 "
 " HOW TO USE JUPYTER NOTEBOOK
 " create a new notebook with $python -m jupyter_ascending.scripts.make_pair --base notebook
