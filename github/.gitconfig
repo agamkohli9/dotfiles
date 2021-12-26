@@ -1,0 +1,15 @@
+[user]
+	email = agamkohli9@gmail.com
+	name = Agam Kohli
+[alias]
+	save = !git add . && git commit -m \"$(curl --silent --fail http://whatthecommit.com/index.txt)\" && git push
+[core]
+	editor = nvim
+[sendemail]
+	confirm = auto
+	smtpServer = smtp.gmail.com
+	smtpServerPort = 587
+	smtpEncryption = tls
+	smtpUser = agamkohli9@gmail.com
+[credential]
+    helper = store
