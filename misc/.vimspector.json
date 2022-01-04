@@ -1,0 +1,32 @@
+{
+  "configurations": {
+    "Python": {
+      "adapter": "debugpy",
+      "configuration": {
+        "name": "Debug",
+        "type": "python",
+        "request": "launch",
+        "python": "/usr/bin/python",
+        "program": "${file}"
+      }
+    },
+
+    "C/C++": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "request": "launch",
+        "program": "${fileBasenameNoExtension}",
+        "args": [],
+        "externalConsole": true,
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ]
+      }
+    }
+  }
+}
