@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " code autocompletion
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " filesystem with C-n
 Plug 'christoomey/vim-tmux-navigator' " Tmux integration
-Plug 'puremourning/vimspector' " Visual debugger
+Plug 'puremourning/vimspector', {'do': 'python3 install_gadget.py --enable-vscode-cpptools'} " Visual debugger
 Plug 'airblade/vim-gitgutter' " Shows changed lines to git repos
 Plug 'tomasiser/vim-code-dark' " VSC theme
 Plug 'vim-airline/vim-airline' " Airline (bottom bar)
@@ -43,7 +43,7 @@ let g:semshi#simplify_markup=v:false
 function MyCustomHighlights()
 	" Agam's own XTERM colors for syntax highlighting
 	hi SemshiLocal       		ctermfg=117
-	hi SemshiGlobal      		ctermfg=227
+	hi SemshiGlobal      		ctermfg=117
 	hi SemshiImported    		ctermfg=218
 	hi SemshiParameter   		ctermfg=49
 	hi semshiParameterUnused 	ctermfg=117
@@ -90,7 +90,7 @@ let g:leetcode_solution_filetype = 'python3'
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
 
-nnoremap <S-F5> :call vimspector#Reset()<CR>
+nnoremap <F2> :VimspectorReset<cr>
 
 " Submode
 
@@ -297,25 +297,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-
-" Gruvbox
-" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
-
 " Misc
 set noshowmode  " to get rid of thing like --INSERT--
 set noshowcmd  " to get rid of display of last command
@@ -336,7 +317,6 @@ set shortmess+=F  " to get rid of the file name displayed in the command line ba
 " 	<F11> - step into
 " 	<F9> - Toggle breakpoint
 " C-n - Toggle NERDTree
-" \term - open terminal
 " :Semshi rename <word> - change all local instances of word on cursor to
 " <word>
 "
@@ -346,3 +326,6 @@ set shortmess+=F  " to get rid of the file name displayed in the command line ba
 " edit py file
 " 	create new python cell with # %%
 " 	create new markdown cell with # %% [markdown]
+"
+" TMUX
+" resize pane - C-b then hold right arrow or left arrow
