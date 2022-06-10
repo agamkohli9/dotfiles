@@ -40,14 +40,15 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id killall polybar; polybar -r example
 
 # Picom launch
-exec_always picom
+exec_always picom --unredir-if-possible
 
 # Tray applet startups
 exec_always --no-startup-id killall blueman-applet; blueman-applet
 exec_always --no-startup-id killall nm-applet; nm-applet
 
 # Set Monitor Resolutions, Refresh Rate, and auto dim off
-exec_always --no-startup-id xrandr --output DP-4 --mode 3440x1440 --rate 144
+exec_always --no-startup-id nvidia-settings --assign CurrentMetaMode="DP-2: 3440x1440_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On, AllowGSYNCCompatible=On}"
+exec_always --no-startup-id nvidia-settings --assign CurrentMetaMode="DP-4: 3440x1440_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On, AllowGSYNCCompatible=On}"
 exec --no-startup-id xset -dpms s off
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -68,7 +69,7 @@ bindsym Print exec scrot -q 100 '%S:%M:%H_%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictur
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st -f "Liberation Mono:pixelsize=16:antialias=false:autohint=false"
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -210,6 +211,7 @@ bindsym $mod+r mode "resize"
 #}
 
 # Wallpaper
+# exec_always xwinwrap -ni -b -fs -ov -nf -- gifview -w WID /usr/share/backgrounds/wallpaper.gif -a
 exec_always feh --bg-fill /usr/share/backgrounds/wallpaper.png
 
 #Theme
@@ -233,6 +235,8 @@ bindsym $mod+p workspace prev
 bindsym $mod+Shift+v exec vivaldi-stable
 bindsym $mod+Shift+p exec poweroff
 bindsym $mod+Shift+c exec code
+bindsym --release $mod+Shift+s exec import /home/agam/Downloads/screen_snip.png
 
 #Startup
-exec t-rex -a ethash -o stratum+tcp://eth-us-east1.nanopool.org:9999 -u 0xEF0E3BBc96B7a026EBE1201F26Fe858E5D1Cbd7B.worker/agamkohli9@gmail.com -p x -d 1
+#starting vpn lowers internet speed
+# exec_always nordvpn connect
