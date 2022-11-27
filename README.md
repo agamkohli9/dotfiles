@@ -12,6 +12,9 @@ Run Neovim
 
 `nvim`
 
-Install Plugin
+Install Plugins
 
-`:PlugInstall`
+```
+:PlugInstall
+:UpdateRemotePlugins
+```
