@@ -3,6 +3,11 @@
 SETUVAR EDITOR:nvim
 SETUVAR FZF_DEFAULT_COMMAND:fdfind\x20\x2d\x2dexclude\x20\x2egit\x20\x2d\x2dtype\x20f\x20\x2d\x2dhidden
 SETUVAR VISUAL:nvim
+SETUVAR ZO_CMD:zo
+SETUVAR Z_CMD:z
+SETUVAR Z_DATA:/home/agam/\x2elocal/share/z/data
+SETUVAR Z_DATA_DIR:/home/agam/\x2elocal/share/z
+SETUVAR Z_EXCLUDE:\x5e/home/agam\x24
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
