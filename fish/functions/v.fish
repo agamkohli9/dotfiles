@@ -1,3 +1,7 @@
 function v
-cd $argv && nvim
+	if test -d $argv
+		cd $argv && nvim
+	else
+		cd $argv/.. && nvim $argv
+	end
 end
