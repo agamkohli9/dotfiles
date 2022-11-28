@@ -1,7 +1,11 @@
 function v
-	if test -d $argv
-		cd $argv && nvim
-	else
-		cd $argv/.. && nvim $argv
-	end
+if count $argv > /dev/null
+if test -d $argv
+cd $argv && nvim
+else
+cd $argv/.. && nvim $argv
+end
+else
+nvim
+end
 end
