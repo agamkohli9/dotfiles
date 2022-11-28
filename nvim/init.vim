@@ -17,6 +17,7 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Python Syntax Highlight
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " dependency for fzf.vim
 Plug 'junegunn/fzf.vim' " fuzzy find files in dir with :Files or files in ~ with :AllFiles
 Plug 'wesQ3/vim-windowswap' " swap buffers x and y: focus on x, \ww, focus on y, \ww
+Plug 'tpope/vim-commentary' " gcc to comment a line and gc to comment a visual block
 
 call plug#end()
 
@@ -358,4 +359,4 @@ set shortmess+=F  " to get rid of the file name displayed in the command line ba
 " 	create new markdown cell with # %% [markdown]
 "
 " TMUX
-" resize pane - C-b then hold right arrow or left arrow
+" resize pane - C-b then hold right arrow or left arrow with Ctrl held down
