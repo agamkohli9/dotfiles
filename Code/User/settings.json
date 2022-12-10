@@ -1,0 +1,24 @@
+{
+    "files.autoSave": "afterDelay",
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j", "k"],
+            "after": ["<esc>"]
+        },
+        {
+            "before": ["k", "j"],
+            "after": ["<esc>"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["K"],
+            "commands": [{ "command": "editor.action.showDefinitionPreviewHover" }]
+        }
+    ],
+    "editor.minimap.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "workbench.startupEditor": "none",
+    "cmake.configureOnOpen": false,
+}
