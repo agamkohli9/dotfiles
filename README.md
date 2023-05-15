@@ -1,5 +1,7 @@
 # Neovim
 
+Install Neovim and NodeJS
+
 Copy my nvim config to your .config
 
 `cp -r dotfiles/nvim ~/.config`
