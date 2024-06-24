@@ -36,6 +36,9 @@ font pango:"JetBrainsMono Nerd Font" 10
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# Dunst launch
+exec_always --no-startup-id dunst
+
 # Polyabr launch
 exec_always --no-startup-id killall polybar; polybar -r example
 
@@ -47,7 +50,7 @@ exec_always --no-startup-id killall blueman-applet; blueman-applet
 exec_always --no-startup-id killall nm-applet; nm-applet
 
 # Set Monitor Resolutions, Refresh Rate, and auto dim off
-exec_always --no-startup-id xrandr --output DP-4 --mode 3440x1440 --rate 144
+exec_always --no-startup-id nvidia-settings --assign CurrentMetaMode="DP-2: 3440x1440_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On, AllowGSYNCCompatible=On}"
 exec --no-startup-id xset -dpms s off
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -68,7 +71,7 @@ bindsym Print exec scrot -q 100 '%S:%M:%H_%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictur
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st -f "Liberation Mono:pixelsize=16:antialias=false:autohint=false"
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -210,9 +213,10 @@ bindsym $mod+r mode "resize"
 #}
 
 # Wallpaper
+# exec_always xwinwrap -ni -b -fs -ov -nf -- gifview -w WID /usr/share/backgrounds/wallpaper.gif -a
 exec_always feh --bg-fill /usr/share/backgrounds/wallpaper.png
 
-#Theme
+# Theme
 set $bgcolor #2e3440
 set $ibgcolor #3b4252
 set $textcolor #eceff4
@@ -225,16 +229,16 @@ client.unfocused        $ibgcolor       $ibgcolor       $itextcolor     $ibgcolo
 client.focused_inactive $ibgcolor       $ibgcolor       $itextcolor     $ibgcolor
 client.urgent           $ubgcolor       $ubgcolor       $textcolor      $ubgcolor
 
-#My Bindsyms
+# My Bindsyms
 workspace_auto_back_and_forth yes
 
 bindsym $mod+n workspace next
 bindsym $mod+p workspace prev
-bindsym $mod+Shift+v exec vivaldi-stable
+bindsym $mod+Shift+v exec vivaldi-stable %U --start-maximized
 bindsym $mod+Shift+p exec poweroff
 bindsym $mod+Shift+c exec code
 bindsym --release $mod+Shift+s exec import /home/agam/Downloads/screen_snip.png
 
-#Startup
-#starting vpn lowers internet speed
+# Startup
+# exec_always bash ~/scripts/mine.sh
 # exec_always nordvpn connect

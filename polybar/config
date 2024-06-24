@@ -57,7 +57,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = memory pulseaudio-control cpu wlan date
+modules-right = gpu memory pulseaudio-control cpu wlan date
 
 separator = |
 
@@ -90,7 +90,7 @@ label-foreground = ${colors.foreground}
 # You can copy-paste your options for each possible action, which is more
 # trouble-free but repetitive, or apply only the relevant ones (for example
 # --sink-blacklist is only needed for next-sink).
-exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_09_00.1.hdmi-stereo-extra2:  Montior" --sink-nickname "alsa_output.usb-Aisa_Expert_SOMIC_STINCOO_GS401_WIRELESS-03.analog-stereo:  Headphones" listen
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --node-nicknames-from "device.description" --node-nickname "alsa_output.pci-0000_09_00.1.hdmi-stereo: Monitor" --node-nickname "alsa_output.pci-0000_09_00.1.hdmi-stereo-extra1: Monitor" --node-nickname "alsa_output.pci-0000_09_00.1.hdmi-stereo-extra2: Monitor" --node-nickname "alsa_output.usb-Aisa_Expert_SOMIC_STINCOO_GS401_WIRELESS-03.analog-stereo:  Headphones" --node-nickname "alsa_output.usb-Sony_Interactive_Entertainment_Wireless_Controller-00.analog-surround-40: DualSense" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control next-sink
 click-middle = pulseaudio-control togmute
@@ -396,6 +396,16 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/gpu]
+type = custom/script
+label = GPU: %output%°C
+exec = nvidia-smi --format=nounits,csv,noheader --query-gpu=temperature.gpu | xargs echo
+tail = true
+format = <label>
+label-foreground = ${colors.blue}
+label-prefix-foreground = ${colors.foreground}
+format-padding = 1
 
 [module/powermenu]
 type = custom/menu
