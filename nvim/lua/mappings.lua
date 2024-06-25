@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", ";", "@:", { desc = "Repeat last command" })
 map("i", "jk", "<ESC>", { desc = "jk for normal mode" })
 map("i", "kj", "<ESC>", { desc = "kj for normal mode" }) 
 
