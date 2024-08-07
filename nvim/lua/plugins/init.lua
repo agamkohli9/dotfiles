@@ -14,14 +14,21 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
-    end
+    end,
+    opts = {
+      servers = {
+        clangd = {
+          mason = false
+        }
+      }
+    }
   },
 
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "clangd", "pyright", "lua-language-server"
+        "pyright", "lua-language-server"
       }
     }
   },
@@ -33,5 +40,17 @@ return {
         "vim", "lua", "cpp", "python"
       }
     }
-  }
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require "configs.gitsigns"
+    end
+  },
+
+  {
+    "tpope/vim-fugitive"
+  },
 }
+
