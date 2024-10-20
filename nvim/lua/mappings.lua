@@ -4,6 +4,8 @@ map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 map("n", ";", "@:", { desc = "Repeat last command" })
 map("i", "jk", "<ESC>", { desc = "jk for normal mode" })
 map("i", "kj", "<ESC>", { desc = "kj for normal mode" }) 
+map('n', "<leader>e", ":lua vim.diagnostic.open_float(0, {scope=\"line\"})<CR>", { desc = "Show full error line"})
+
 
 -- NVChad - tabufline
 map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new" })
