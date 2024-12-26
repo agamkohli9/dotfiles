@@ -40,7 +40,7 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help 
 map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
-map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+--map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 map("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "telescope nvchad themes" })
@@ -55,3 +55,6 @@ map('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
 map('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
 map('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
 map('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+
+-- CopilotChat.nvim
+map("n", "<leader>c", "<cmd>CopilotChatToggle<CR>", { desc = "toggle Copilot chat" })
