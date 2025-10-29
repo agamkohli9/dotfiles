@@ -6,6 +6,14 @@ return {
       local nvim_tmux_nav = require('nvim-tmux-navigation')
       nvim_tmux_nav.setup {
         disable_when_zoomed = true, -- defaults to false
+        keybindings = {
+            left = "<C-h>",
+            down = "<C-j>",
+            up = "<C-k>",
+            right = "<C-l>",
+            last_active = "<C-\\>",
+            next = "<C-Space>",
+        }
       }
     end
   },
@@ -63,29 +71,29 @@ return {
     config = true,
   },
 
-  {
-    'github/copilot.vim',
-    lazy = false,
-  },
-
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
-      mappings = {
-        complete = {
-          detail = 'Use @<Tab> or /<Tab> for options.',
-          insert = '<S-Tab>'
-        }
-      }
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-    lazy = false,
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   lazy = false,
+  -- },
+  --
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+  --     { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+  --   },
+  --   build = "make tiktoken", -- Only on MacOS or Linux
+  --   opts = {
+  --     -- See Configuration section for options
+  --     mappings = {
+  --       complete = {
+  --         detail = 'Use @<Tab> or /<Tab> for options.',
+  --         insert = '<S-Tab>'
+  --       }
+  --     }
+  --   },
+  --   -- See Commands section for default commands if you want to lazy load on them
+  --   lazy = false,
+  -- },
 }
 
